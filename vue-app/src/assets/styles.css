@@ -4,3 +4,18 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+.bg-main {
+  background: #fffffe;
+}
+.bg-card {
+  box-shadow: none !important;
+  background: #f2f4f6;
+  color: #1b2d45;
+}
+.bg-tag {
+  background: #fffffe !important;
+  color: #00214d !important;
+}
+small {
+  color: #ff5470;
+}
