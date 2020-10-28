@@ -1,0 +1,56 @@
+version: "3.8"
+
+services:
+  # Proxies requests
+  nginx-reverse-proxy:
+    image: nginx:1.19.3-alpine
+    container_name: nginx_reverse_proxy
+    depends_on:
+      - vue-app
+      - node-api
+      - go-api
+      - python-api
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - 80:80
+  # vue-app - frontend
+  vue-app:
+    image: vue-app
+    container_name: vue-app
+    build:
+      context: ./vue-app
+    depends_on:
+      - node-api
+      - go-api
+      - python-api
+    ports:
+      - 8080:80
+    restart: on-failure
+  # Fastify API - backend
+  node-api:
+    image: node-api
+    container_name: node-api
+    build:
+      context: ./node-api
+    ports:
+      - 6104:6104
+    restart: on-failure
+  # Fiber API - backend
+  go-api:
+    image: go-api
+    container_name: go-api
+    build:
+      context: ./go-api
+    ports:
+      - 8924:8924
+    restart: on-failure
+  # Flask API - backend
+  python-api:
+    image: python-api
+    container_name: python-api
+    build:
+      context: ./python-api
+    ports:
+      - 7819:7819
+    restart: on-failure
