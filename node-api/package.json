@@ -1,0 +1,14 @@
+{
+  "name": "node-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "serve": "sucrase-node index.js"
+  },
+  "dependencies": {
+    "fastify": "^3.7.0",
+    "fastify-cors": "^4.1.0",
+    "sucrase": "^3.16.0"
+  }
+}
