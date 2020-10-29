@@ -1,12 +1,7 @@
-from flask import Flask, request, jsonify
+from bottle import get, run
 
-app = Flask(__name__)
+@get('/')
+def index():
+    return 'Hello World'
 
-
-@app.route('/', methods=['Get'])
-def get():
-    return jsonify({'msg': 'Python API running.'})
-
-
-if __name__ == '__main__':
-    app.run(port=7819)
+run(host='localhost', port=7819)
