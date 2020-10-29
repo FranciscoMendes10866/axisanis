@@ -2,6 +2,6 @@ from bottle import get, run
 
 @get('/')
 def index():
-    return 'Hello World'
+    return { "msg": "Python API running." }
 
-run(host='localhost', port=7819)
+run(host='0.0.0.0', port=7819)

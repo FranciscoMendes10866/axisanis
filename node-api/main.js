@@ -8,4 +8,4 @@ app.get('/', (request, reply) => {
     return reply.send({ msg: 'Node API running.' })
 })
 
-app.listen(6104)
+app.listen(6104, '0.0.0.0')
