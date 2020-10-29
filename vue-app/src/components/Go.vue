@@ -1,9 +1,8 @@
 <template>
   <div class="card bg-card">
     <div class="card-content">
-      <p class="is-size-4">
-        “There are two hard things in computer science: cache invalidation,
-        naming things, and off-by-one errors.”
+      <p class="is-size-5">
+        {{ state.go }}
       </p>
       <small class="is-size-6 has-text-weight-bold">
         Go
@@ -14,7 +13,25 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, reactive, onMounted } from "vue";
+import axios from "axios";
 
-export default defineComponent({});
+export default defineComponent({
+  setup() {
+    const state = reactive({
+      go: null
+    });
+    async function Fetch() {
+      await axios.get("http://localhost/go-api").then(res => {
+        state.go = res.data;
+      });
+    }
+    onMounted(Fetch);
+    return {
+      state,
+      Fetch
+    };
+  }
+});
 </script>
+

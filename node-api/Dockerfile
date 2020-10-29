@@ -4,4 +4,4 @@ COPY package.json .
 RUN yarn install
 COPY . .
 EXPOSE 6104
-CMD ["yarn", "start"]
+CMD ["yarn", "serve"]
